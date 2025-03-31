@@ -1,16 +1,16 @@
-package mk.finki.ukim.mk.emtlab.service;
+package mk.finki.ukim.mk.emtlab.service.domain;
 
-import mk.finki.ukim.mk.emtlab.model.Book;
-import mk.finki.ukim.mk.emtlab.model.Category;
-import mk.finki.ukim.mk.emtlab.model.dto.BookDto;
+import mk.finki.ukim.mk.emtlab.model.domain.Book;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Category;
+import mk.finki.ukim.mk.emtlab.dto.BookDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface BookService {
-    Optional<Book> save(BookDto bookDto);
+    Optional<Book> save(Book book);
 
-    Optional<Book> update(Long id, BookDto bookDto);
+    Optional<Book> update(Long id, Book book);
 
     void deleteById(Long id);
 

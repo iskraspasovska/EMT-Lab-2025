@@ -1,4 +1,4 @@
-package mk.finki.ukim.mk.emtlab.model;
+package mk.finki.ukim.mk.emtlab.model.enumerations;
 
 public enum Condition {
     NEW,

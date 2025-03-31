@@ -1,11 +1,12 @@
-package mk.finki.ukim.mk.emtlab.bootstrap;
+package mk.finki.ukim.mk.emtlab.config;
 
 import jakarta.annotation.PostConstruct;
-import mk.finki.ukim.mk.emtlab.model.*;
-import mk.finki.ukim.mk.emtlab.repository.AuthorRepository;
-import mk.finki.ukim.mk.emtlab.repository.BookRepository;
-import mk.finki.ukim.mk.emtlab.repository.CopyRepository;
-import mk.finki.ukim.mk.emtlab.repository.CountryRepository;
+import mk.finki.ukim.mk.emtlab.model.domain.*;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Category;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Condition;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Role;
+import mk.finki.ukim.mk.emtlab.repository.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,12 +18,17 @@ public class DataInitializer {
     private final AuthorRepository authorRepository;
     private final CountryRepository countryRepository;
     private final CopyRepository copyRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public DataInitializer(BookRepository bookRepository, AuthorRepository authorRepository, CountryRepository countryRepository, CopyRepository copyRepository) {
+
+    public DataInitializer(BookRepository bookRepository, AuthorRepository authorRepository, CountryRepository countryRepository, CopyRepository copyRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.countryRepository = countryRepository;
         this.copyRepository = copyRepository;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostConstruct
@@ -48,5 +54,24 @@ public class DataInitializer {
         bookRepository.save(new Book("Harry Potter and the Sorcerer's Stone", Category.FANTASY, authorRepository.findByName("J.K."), copies1));
         bookRepository.save(new Book("The Da Vinci Code", Category.THRILLER, authorRepository.findByName("Dan"), copies2));
         bookRepository.save(new Book("War and Peace", Category.CLASSICS, authorRepository.findByName("Leo"), copies3));
+
+
+        userRepository.save(new User(
+                "is",
+                passwordEncoder.encode("at"),
+                "Iskra",
+                "Spasovska",
+                Role.ROLE_LIBRARIAN
+        ));
+
+        userRepository.save(new User(
+                "user",
+                passwordEncoder.encode("user"),
+                "user",
+                "user",
+                Role.ROLE_USER
+        ));
+
+
     }
 }

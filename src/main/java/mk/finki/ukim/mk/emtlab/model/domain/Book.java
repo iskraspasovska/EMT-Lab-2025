@@ -1,8 +1,8 @@
-package mk.finki.ukim.mk.emtlab.model;
+package mk.finki.ukim.mk.emtlab.model.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +77,13 @@ public class Book {
 
     public Book(Long id, String name, Category category, Author author) {
         this.id = id;
+        this.name = name;
+        this.category = category;
+        this.author = author;
+        this.copies = new ArrayList<>();
+    }
+
+    public Book(String name, Category category, Author author) {
         this.name = name;
         this.category = category;
         this.author = author;

@@ -1,9 +1,7 @@
-package mk.finki.ukim.mk.emtlab.model;
+package mk.finki.ukim.mk.emtlab.model.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Entity

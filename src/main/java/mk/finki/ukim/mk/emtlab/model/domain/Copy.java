@@ -1,7 +1,8 @@
-package mk.finki.ukim.mk.emtlab.model;
+package mk.finki.ukim.mk.emtlab.model.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Condition;
 
 @Entity
 @Data

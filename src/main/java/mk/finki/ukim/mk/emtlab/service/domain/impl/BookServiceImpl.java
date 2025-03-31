@@ -1,11 +1,11 @@
-package mk.finki.ukim.mk.emtlab.service.impl;
+package mk.finki.ukim.mk.emtlab.service.domain.impl;
 
-import mk.finki.ukim.mk.emtlab.model.Book;
-import mk.finki.ukim.mk.emtlab.model.Category;
-import mk.finki.ukim.mk.emtlab.model.dto.BookDto;
+import mk.finki.ukim.mk.emtlab.model.domain.Book;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Category;
+import mk.finki.ukim.mk.emtlab.dto.BookDto;
 import mk.finki.ukim.mk.emtlab.repository.AuthorRepository;
 import mk.finki.ukim.mk.emtlab.repository.BookRepository;
-import mk.finki.ukim.mk.emtlab.service.BookService;
+import mk.finki.ukim.mk.emtlab.service.domain.BookService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,22 +24,26 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public Optional<Book> save(BookDto bookDto) {
-        return Optional.of(bookRepository.save(new Book(bookDto.getName(), bookDto.getCategory(), authorRepository.findById(bookDto.getAuthor()).get(), bookDto.getCopies())));
+    public Optional<Book> save(Book book) {
+        return Optional.of(bookRepository.save(new Book(
+                book.getName(),
+                book.getCategory(),
+                authorRepository.findById(book.getAuthor().getId())
+                        .get())));
     }
 
     @Override
-    public Optional<Book> update(Long id, BookDto bookDto) {
+    public Optional<Book> update(Long id, Book book) {
         return bookRepository.findById(id)
                 .map(existingBook -> {
-                    if (bookDto.getName() != null) {
-                        existingBook.setName(bookDto.getName());
+                    if (book.getName() != null) {
+                        existingBook.setName(book.getName());
                     }
-                    if (bookDto.getCategory() != null) {
-                        existingBook.setCategory(bookDto.getCategory());
+                    if (book.getCategory() != null) {
+                        existingBook.setCategory(book.getCategory());
                     }
-                    if (bookDto.getAuthor() != null) {
-                        existingBook.setAuthor(authorRepository.findById(bookDto.getAuthor()).get());
+                    if (book.getAuthor() != null) {
+                        existingBook.setAuthor(authorRepository.findById(book.getAuthor().getId()).get());
                     }
                     return bookRepository.save(existingBook);
                 });

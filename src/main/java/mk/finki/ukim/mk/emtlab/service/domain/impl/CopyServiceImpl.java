@@ -1,9 +1,9 @@
-package mk.finki.ukim.mk.emtlab.service.impl;
+package mk.finki.ukim.mk.emtlab.service.domain.impl;
 
-import mk.finki.ukim.mk.emtlab.model.Condition;
-import mk.finki.ukim.mk.emtlab.model.Copy;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Condition;
+import mk.finki.ukim.mk.emtlab.model.domain.Copy;
 import mk.finki.ukim.mk.emtlab.repository.CopyRepository;
-import mk.finki.ukim.mk.emtlab.service.CopyService;
+import mk.finki.ukim.mk.emtlab.service.domain.CopyService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

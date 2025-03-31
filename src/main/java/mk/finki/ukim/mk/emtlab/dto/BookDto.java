@@ -1,11 +1,11 @@
-package mk.finki.ukim.mk.emtlab.model.dto;
+package mk.finki.ukim.mk.emtlab.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mk.finki.ukim.mk.emtlab.model.Category;
-import mk.finki.ukim.mk.emtlab.model.Copy;
+import mk.finki.ukim.mk.emtlab.model.enumerations.Category;
+import mk.finki.ukim.mk.emtlab.model.domain.Copy;
 
 import java.util.List;
 

@@ -1,6 +1,4 @@
-package mk.finki.ukim.mk.emtlab.model;
-
-import jakarta.persistence.Enumerated;
+package mk.finki.ukim.mk.emtlab.model.enumerations;
 
 public enum Category {
     NOVEL,
