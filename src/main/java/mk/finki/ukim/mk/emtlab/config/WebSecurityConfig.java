@@ -44,6 +44,7 @@ public class WebSecurityConfig {
                         corsConfigurationSource()))
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/api/user/login", "/api/user/register").permitAll()
+                        .requestMatchers("/api/wishlist/**").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/api/books/**").hasAnyRole("USER", "LIBRARIAN")
                         .requestMatchers("/api/books/**", "/api/copies/**").hasRole("LIBRARIAN")
                         .anyRequest().authenticated()
